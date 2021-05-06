@@ -1,0 +1,455 @@
+
+prosjetk_mikro.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000001c  00800100  000002b6  0000034a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002b6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000003  0080011c  0080011c  00000366  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000366  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000398  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000098  00000000  00000000  000003d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000cde  00000000  00000000  00000470  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000082e  00000000  00000000  0000114e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000667  00000000  00000000  0000197c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000198  00000000  00000000  00001fe4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004b1  00000000  00000000  0000217c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000005e3  00000000  00000000  0000262d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000078  00000000  00000000  00002c10  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 d1 00 	jmp	0x1a2	; 0x1a2 <__vector_5>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e6 eb       	ldi	r30, 0xB6	; 182
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 31       	cpi	r26, 0x1C	; 28
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ac e1       	ldi	r26, 0x1C	; 28
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	af 31       	cpi	r26, 0x1F	; 31
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 53 00 	call	0xa6	; 0xa6 <main>
+  9e:	0c 94 59 01 	jmp	0x2b2	; 0x2b2 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <main>:
+uint8_t Blue_value;
+
+int main(void)
+{
+	//Konfigurer kontrolleren
+	DDRD = (1<<PORTD6) | (1<<PIND3);// RØD LED og internal-pullup på knapp (PD3)
+  a6:	88 e4       	ldi	r24, 0x48	; 72
+  a8:	8a b9       	out	0x0a, r24	; 10
+	DDRB = (1<<PORTB1) | (1<<PORTB2); // Setter GRØNN OG BLÅ LED til output.
+  aa:	86 e0       	ldi	r24, 0x06	; 6
+  ac:	84 b9       	out	0x04, r24	; 4
+	
+	//ADC
+    ADMUX = (1<<REFS0) | (1<<ADLAR); //leftshift på ADC så vi kan lese av ADCH 8-bits verdier.
+  ae:	80 e6       	ldi	r24, 0x60	; 96
+  b0:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	DIDR0 = (1<<ADC0D) | (1<<ADC1D) |(1<<ADC2D); // Tre ulike ADC potmeter
+  b4:	87 e0       	ldi	r24, 0x07	; 7
+  b6:	80 93 7e 00 	sts	0x007E, r24	; 0x80007e <__TEXT_REGION_LENGTH__+0x7f807e>
+	ADCSRA = (1<<ADEN) | (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0); //
+  ba:	87 e8       	ldi	r24, 0x87	; 135
+  bc:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+	
+	//PWM TIMER 0
+	TCCR0A = (1<<COM0A1) | (1<<WGM00) | (1<<WGM01); //Fast PWM og OCR0A 
+  c0:	83 e8       	ldi	r24, 0x83	; 131
+  c2:	84 bd       	out	0x24, r24	; 36
+	TCCR0B = (1<<CS02); //prescale 256
+  c4:	84 e0       	ldi	r24, 0x04	; 4
+  c6:	85 bd       	out	0x25, r24	; 37
+	
+	//PWM TIMER 1
+	TCCR1A = (1<<COM1A1) |(1<<COM1B1) |  (1<<WGM10);
+  c8:	91 ea       	ldi	r25, 0xA1	; 161
+  ca:	90 93 80 00 	sts	0x0080, r25	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
+	TCCR1B = (1<<CS12) | (1<<WGM12); //prescale 256
+  ce:	9c e0       	ldi	r25, 0x0C	; 12
+  d0:	90 93 81 00 	sts	0x0081, r25	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+	
+	//Interupt
+	PCICR = (1<<PCIE2);
+  d4:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__TEXT_REGION_LENGTH__+0x7f8068>
+	PCMSK2 = (1 << PCINT19);
+  d8:	88 e0       	ldi	r24, 0x08	; 8
+  da:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <__TEXT_REGION_LENGTH__+0x7f806d>
+	sei();
+  de:	78 94       	sei
+	
+	//Terminal
+	initUSART();
+  e0:	0e 94 fe 00 	call	0x1fc	; 0x1fc <initUSART>
+	
+	
+    do{
+		//Rød verdi:
+		ADMUX = 0b01100000;
+  e4:	80 e6       	ldi	r24, 0x60	; 96
+  e6:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	    ADCSRA |= (1<<ADSC);
+  ea:	ea e7       	ldi	r30, 0x7A	; 122
+  ec:	f0 e0       	ldi	r31, 0x00	; 0
+  ee:	80 81       	ld	r24, Z
+  f0:	80 64       	ori	r24, 0x40	; 64
+  f2:	80 83       	st	Z, r24
+	    do {} while(ADCSRA & (1<<ADSC));
+  f4:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+  f8:	86 fd       	sbrc	r24, 6
+  fa:	fc cf       	rjmp	.-8      	; 0xf4 <main+0x4e>
+		Red_value = ADCH;
+  fc:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 100:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <__data_end>
+		printString("Rød:");
+ 104:	80 e0       	ldi	r24, 0x00	; 0
+ 106:	91 e0       	ldi	r25, 0x01	; 1
+ 108:	0e 94 16 01 	call	0x22c	; 0x22c <printString>
+	    printByte(Red_value);
+ 10c:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <__data_end>
+ 110:	0e 94 29 01 	call	0x252	; 0x252 <printByte>
+		printString("  ---  ");
+ 114:	85 e0       	ldi	r24, 0x05	; 5
+ 116:	91 e0       	ldi	r25, 0x01	; 1
+ 118:	0e 94 16 01 	call	0x22c	; 0x22c <printString>
+		
+		//Grønn verdi:
+		 ADMUX = 0b01100001;
+ 11c:	81 e6       	ldi	r24, 0x61	; 97
+ 11e:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+		 ADCSRA |= (1<<ADSC);
+ 122:	ea e7       	ldi	r30, 0x7A	; 122
+ 124:	f0 e0       	ldi	r31, 0x00	; 0
+ 126:	80 81       	ld	r24, Z
+ 128:	80 64       	ori	r24, 0x40	; 64
+ 12a:	80 83       	st	Z, r24
+		 do {} while(ADCSRA & (1<<ADSC));
+ 12c:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+ 130:	86 fd       	sbrc	r24, 6
+ 132:	fc cf       	rjmp	.-8      	; 0x12c <main+0x86>
+		 Green_value = ADCH;
+ 134:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 138:	80 93 1d 01 	sts	0x011D, r24	; 0x80011d <Green_value>
+		 printString("Grønn:");
+ 13c:	8d e0       	ldi	r24, 0x0D	; 13
+ 13e:	91 e0       	ldi	r25, 0x01	; 1
+ 140:	0e 94 16 01 	call	0x22c	; 0x22c <printString>
+		 printByte(Green_value);
+ 144:	80 91 1d 01 	lds	r24, 0x011D	; 0x80011d <Green_value>
+ 148:	0e 94 29 01 	call	0x252	; 0x252 <printByte>
+		 printString("  ---  ");
+ 14c:	85 e0       	ldi	r24, 0x05	; 5
+ 14e:	91 e0       	ldi	r25, 0x01	; 1
+ 150:	0e 94 16 01 	call	0x22c	; 0x22c <printString>
+		 
+		 //Blå verdi:
+		  ADMUX = 0b01100010;
+ 154:	82 e6       	ldi	r24, 0x62	; 98
+ 156:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+		  ADCSRA |= (1<<ADSC);
+ 15a:	ea e7       	ldi	r30, 0x7A	; 122
+ 15c:	f0 e0       	ldi	r31, 0x00	; 0
+ 15e:	80 81       	ld	r24, Z
+ 160:	80 64       	ori	r24, 0x40	; 64
+ 162:	80 83       	st	Z, r24
+		  do {} while(ADCSRA & (1<<ADSC));
+ 164:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+ 168:	86 fd       	sbrc	r24, 6
+ 16a:	fc cf       	rjmp	.-8      	; 0x164 <main+0xbe>
+		  Blue_value = ADCH;
+ 16c:	80 91 79 00 	lds	r24, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+ 170:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <Blue_value>
+		  printString("Blå:");
+ 174:	84 e1       	ldi	r24, 0x14	; 20
+ 176:	91 e0       	ldi	r25, 0x01	; 1
+ 178:	0e 94 16 01 	call	0x22c	; 0x22c <printString>
+		  printByte(Blue_value);
+ 17c:	80 91 1e 01 	lds	r24, 0x011E	; 0x80011e <Blue_value>
+ 180:	0e 94 29 01 	call	0x252	; 0x252 <printByte>
+		  printString("\r\n");
+ 184:	89 e1       	ldi	r24, 0x19	; 25
+ 186:	91 e0       	ldi	r25, 0x01	; 1
+ 188:	0e 94 16 01 	call	0x22c	; 0x22c <printString>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 18c:	80 e1       	ldi	r24, 0x10	; 16
+ 18e:	97 e2       	ldi	r25, 0x27	; 39
+ 190:	05 c0       	rjmp	.+10     	; 0x19c <main+0xf6>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 192:	e0 e9       	ldi	r30, 0x90	; 144
+ 194:	f1 e0       	ldi	r31, 0x01	; 1
+ 196:	31 97       	sbiw	r30, 0x01	; 1
+ 198:	f1 f7       	brne	.-4      	; 0x196 <main+0xf0>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 19a:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 19c:	00 97       	sbiw	r24, 0x00	; 0
+ 19e:	c9 f7       	brne	.-14     	; 0x192 <main+0xec>
+ 1a0:	a1 cf       	rjmp	.-190    	; 0xe4 <main+0x3e>
+
+000001a2 <__vector_5>:
+		 _delay_ms(1000);
+		 
+    } while(1);
+    }
+	
+    ISR(PCINT2_vect){
+ 1a2:	1f 92       	push	r1
+ 1a4:	0f 92       	push	r0
+ 1a6:	0f b6       	in	r0, 0x3f	; 63
+ 1a8:	0f 92       	push	r0
+ 1aa:	11 24       	eor	r1, r1
+ 1ac:	8f 93       	push	r24
+ 1ae:	9f 93       	push	r25
+ 1b0:	ef 93       	push	r30
+ 1b2:	ff 93       	push	r31
+		//RGB til farger:
+		OCR0A = Red_value;
+ 1b4:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <__data_end>
+ 1b8:	87 bd       	out	0x27, r24	; 39
+		OCR1A = Green_value;
+ 1ba:	80 91 1d 01 	lds	r24, 0x011D	; 0x80011d <Green_value>
+ 1be:	90 e0       	ldi	r25, 0x00	; 0
+ 1c0:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 1c4:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+		OCR1B = Blue_value;
+ 1c8:	80 91 1e 01 	lds	r24, 0x011E	; 0x80011e <Blue_value>
+ 1cc:	90 e0       	ldi	r25, 0x00	; 0
+ 1ce:	90 93 8b 00 	sts	0x008B, r25	; 0x80008b <__TEXT_REGION_LENGTH__+0x7f808b>
+ 1d2:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__TEXT_REGION_LENGTH__+0x7f808a>
+	if (__tmp < 1.0)
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 1d6:	88 ee       	ldi	r24, 0xE8	; 232
+ 1d8:	93 e0       	ldi	r25, 0x03	; 3
+ 1da:	05 c0       	rjmp	.+10     	; 0x1e6 <__vector_5+0x44>
+ 1dc:	e0 e9       	ldi	r30, 0x90	; 144
+ 1de:	f1 e0       	ldi	r31, 0x01	; 1
+ 1e0:	31 97       	sbiw	r30, 0x01	; 1
+ 1e2:	f1 f7       	brne	.-4      	; 0x1e0 <__vector_5+0x3e>
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 1e4:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 1e6:	00 97       	sbiw	r24, 0x00	; 0
+ 1e8:	c9 f7       	brne	.-14     	; 0x1dc <__vector_5+0x3a>
+		
+		_delay_ms(100);
+	}
+ 1ea:	ff 91       	pop	r31
+ 1ec:	ef 91       	pop	r30
+ 1ee:	9f 91       	pop	r25
+ 1f0:	8f 91       	pop	r24
+ 1f2:	0f 90       	pop	r0
+ 1f4:	0f be       	out	0x3f, r0	; 63
+ 1f6:	0f 90       	pop	r0
+ 1f8:	1f 90       	pop	r1
+ 1fa:	18 95       	reti
+
+000001fc <initUSART>:
+      myString[i] = response;                       /* add in a letter */
+      i++;
+    }
+  }
+  myString[i] = 0;                          /* terminal NULL character */
+}
+ 1fc:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 200:	87 e6       	ldi	r24, 0x67	; 103
+ 202:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 206:	e0 ec       	ldi	r30, 0xC0	; 192
+ 208:	f0 e0       	ldi	r31, 0x00	; 0
+ 20a:	80 81       	ld	r24, Z
+ 20c:	8d 7f       	andi	r24, 0xFD	; 253
+ 20e:	80 83       	st	Z, r24
+ 210:	88 e1       	ldi	r24, 0x18	; 24
+ 212:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+ 216:	86 e0       	ldi	r24, 0x06	; 6
+ 218:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+ 21c:	08 95       	ret
+
+0000021e <transmitByte>:
+ 21e:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 222:	95 ff       	sbrs	r25, 5
+ 224:	fc cf       	rjmp	.-8      	; 0x21e <transmitByte>
+ 226:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 22a:	08 95       	ret
+
+0000022c <printString>:
+ 22c:	0f 93       	push	r16
+ 22e:	1f 93       	push	r17
+ 230:	cf 93       	push	r28
+ 232:	8c 01       	movw	r16, r24
+ 234:	c0 e0       	ldi	r28, 0x00	; 0
+ 236:	03 c0       	rjmp	.+6      	; 0x23e <printString+0x12>
+ 238:	0e 94 0f 01 	call	0x21e	; 0x21e <transmitByte>
+ 23c:	cf 5f       	subi	r28, 0xFF	; 255
+ 23e:	f8 01       	movw	r30, r16
+ 240:	ec 0f       	add	r30, r28
+ 242:	f1 1d       	adc	r31, r1
+ 244:	80 81       	ld	r24, Z
+ 246:	81 11       	cpse	r24, r1
+ 248:	f7 cf       	rjmp	.-18     	; 0x238 <printString+0xc>
+ 24a:	cf 91       	pop	r28
+ 24c:	1f 91       	pop	r17
+ 24e:	0f 91       	pop	r16
+ 250:	08 95       	ret
+
+00000252 <printByte>:
+
+void printByte(uint8_t byte) {
+ 252:	cf 93       	push	r28
+ 254:	df 93       	push	r29
+ 256:	d8 2f       	mov	r29, r24
+              /* Converts a byte to a string of decimal text, sends it */
+  transmitByte('0' + (byte / 100));                        /* Hundreds */
+ 258:	89 e2       	ldi	r24, 0x29	; 41
+ 25a:	d8 9f       	mul	r29, r24
+ 25c:	81 2d       	mov	r24, r1
+ 25e:	11 24       	eor	r1, r1
+ 260:	82 95       	swap	r24
+ 262:	8f 70       	andi	r24, 0x0F	; 15
+ 264:	80 5d       	subi	r24, 0xD0	; 208
+ 266:	0e 94 0f 01 	call	0x21e	; 0x21e <transmitByte>
+  transmitByte('0' + ((byte / 10) % 10));                      /* Tens */
+ 26a:	9d ec       	ldi	r25, 0xCD	; 205
+ 26c:	d9 9f       	mul	r29, r25
+ 26e:	c1 2d       	mov	r28, r1
+ 270:	11 24       	eor	r1, r1
+ 272:	c6 95       	lsr	r28
+ 274:	c6 95       	lsr	r28
+ 276:	c6 95       	lsr	r28
+ 278:	c9 9f       	mul	r28, r25
+ 27a:	91 2d       	mov	r25, r1
+ 27c:	11 24       	eor	r1, r1
+ 27e:	96 95       	lsr	r25
+ 280:	96 95       	lsr	r25
+ 282:	96 95       	lsr	r25
+ 284:	99 0f       	add	r25, r25
+ 286:	89 2f       	mov	r24, r25
+ 288:	88 0f       	add	r24, r24
+ 28a:	88 0f       	add	r24, r24
+ 28c:	98 0f       	add	r25, r24
+ 28e:	8c 2f       	mov	r24, r28
+ 290:	89 1b       	sub	r24, r25
+ 292:	80 5d       	subi	r24, 0xD0	; 208
+ 294:	0e 94 0f 01 	call	0x21e	; 0x21e <transmitByte>
+  transmitByte('0' + (byte % 10));                             /* Ones */
+ 298:	cc 0f       	add	r28, r28
+ 29a:	8c 2f       	mov	r24, r28
+ 29c:	88 0f       	add	r24, r24
+ 29e:	88 0f       	add	r24, r24
+ 2a0:	c8 0f       	add	r28, r24
+ 2a2:	8d 2f       	mov	r24, r29
+ 2a4:	8c 1b       	sub	r24, r28
+ 2a6:	80 5d       	subi	r24, 0xD0	; 208
+ 2a8:	0e 94 0f 01 	call	0x21e	; 0x21e <transmitByte>
+}
+ 2ac:	df 91       	pop	r29
+ 2ae:	cf 91       	pop	r28
+ 2b0:	08 95       	ret
+
+000002b2 <_exit>:
+ 2b2:	f8 94       	cli
+
+000002b4 <__stop_program>:
+ 2b4:	ff cf       	rjmp	.-2      	; 0x2b4 <__stop_program>
